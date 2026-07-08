@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "bullmq": "^5.79.3",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pg": "^8.22.0",
     "redis": "^6.1.0"
