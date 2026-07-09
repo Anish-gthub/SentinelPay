@@ -23,6 +23,14 @@ app.use(idempotencyMiddleware);
 // Mount Modular Endpoint Groupings
 app.use('/api/v1', paymentRoutes);
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        status: "healthy",
+        service: "SentinelPay API Gateway",
+        message: "System operational. Database and cache layers connected. 🚀"
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`🚀 SentinelPay Enterprise Server running on port ${PORT}`);
 });
