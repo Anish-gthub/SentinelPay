@@ -1,6 +1,6 @@
 require('dotenv').config();
-const SENDER_ID = "26033801-c2bb-426b-847e-39ba6fbc1c95";
-const RECEIVER_ID = "f561dd02-06e9-4270-91ce-0cf19c11925f";
+const SENDER_ID = process.env.TEST_SENDER_WALLET_ID;
+const RECEIVER_ID = process.env.TEST_RECEIVER_WALLET_ID;
 const AMOUNT = 10.00;
 
 async function sendRequest(idempotencyKey) {

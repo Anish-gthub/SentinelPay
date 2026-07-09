@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Simple Core Health Validation Target (Leave Unprotected)
+// Simple Core Health Validation Target
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'SentinelPay Core Gateway is active.' });
 });
