@@ -21,7 +21,7 @@ SentinelPay is a robust backend payment processing engine designed to solve comp
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech Stack
 
 * **Runtime:** Node.js, Express.js
 * **Primary Database:** PostgreSQL (Neon Cloud)
