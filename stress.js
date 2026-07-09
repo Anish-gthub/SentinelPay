@@ -1,11 +1,11 @@
 require('dotenv').config();
-const SENDER_ID = process.env.TEST_SENDER_WALLET_ID;
-const RECEIVER_ID = process.env.TEST_RECEIVER_WALLET_ID;
+const SENDER_ID =process.env.TEST_SENDER_WALLET_ID;
+const RECEIVER_ID =process.env.TEST_RECEIVER_WALLET_ID;
 const AMOUNT = 10.00;
 
 async function sendRequest(idempotencyKey) {
     try {
-        const response = await fetch('http://localhost:3000/api/v1/payments', {
+        const response = await fetch('https://sentinel-pay-api.onrender.com/api/v1/payments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,8 @@ async function runRedisTest() {
     const results = await Promise.all(requests);
     
     results.forEach((res, index) => {
-        console.log(`Request ${index + 1}: HTTP ${res.status} ->`, res.data.error || res.data.message || 'Cached Response');
+        const msg = res.data ? (res.data.error || res.data.message) : 'No response body';
+        console.log(`Request ${index + 1}: HTTP ${res.status} ->`, msg);
     });
 }
 
@@ -59,7 +60,8 @@ async function runPostgresTest() {
     const results = await Promise.all(requests);
     
     results.forEach((res, index) => {
-        console.log(`Request ${index + 1}: HTTP ${res.status} ->`, res.data.error || res.data.message);
+        const msg = res.data ? (res.data.error || res.data.message) : 'No response body';
+        console.log(`Request ${index + 1}: HTTP ${res.status} ->`, msg);
     });
 }
 

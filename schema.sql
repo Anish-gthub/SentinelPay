@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS ledger_entries CASCADE;
+DROP TABLE IF EXISTS wallets CASCADE;
 --Wallets Table
 CREATE TABLE wallets (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

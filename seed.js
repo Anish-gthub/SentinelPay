@@ -22,12 +22,13 @@ async function runSetup() {
         await pool.query('TRUNCATE TABLE ledger_entries, wallets CASCADE;');
 
         // Insert dummy Wallets funded with $100 each
+        // 3. Insert Dummy Wallets funded with $100 each (including required user_ids)
         console.log('⏳ Seeding dummy wallets...');
         const senderResult = await pool.query(
-            "INSERT INTO wallets (balance) VALUES (100.00) RETURNING id;"
+            "INSERT INTO wallets (user_id, balance) VALUES ('test_user_sender', 100.00) RETURNING id;"
         );
         const receiverResult = await pool.query(
-            "INSERT INTO wallets (balance) VALUES (100.00) RETURNING id;"
+            "INSERT INTO wallets (user_id, balance) VALUES ('test_user_receiver', 100.00) RETURNING id;"
         );
 
         const senderId = senderResult.rows[0].id;
