@@ -1,4 +1,4 @@
--- Create the Wallets Table
+--Wallets Table
 CREATE TABLE wallets (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id VARCHAR(255) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE wallets (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create the Ledger Entries Table
+--Ledger Entries Table
 CREATE TABLE ledger_entries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     source_wallet_id UUID REFERENCES wallets(id),

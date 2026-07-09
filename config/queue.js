@@ -1,6 +1,6 @@
 const { Queue } = require('bullmq');
 
-// Initialize the queue using your local Redis connection
+// Initializing the queue using your local Redis connection
 const paymentQueue = new Queue('post-payment-tasks', {
     connection: {
         host: '127.0.0.1',

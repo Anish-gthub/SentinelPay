@@ -1,4 +1,3 @@
-// middlewares/auth.js
 const authenticateKey = (req, res, next) => {
     // 1. Extract the Authorization header
     const authHeader = req.headers['authorization'];
