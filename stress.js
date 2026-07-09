@@ -1,4 +1,4 @@
-// stress.js - The Race Condition & Idempotency Attacker
+require('dotenv').config();
 const SENDER_ID = "26033801-c2bb-426b-847e-39ba6fbc1c95";
 const RECEIVER_ID = "f561dd02-06e9-4270-91ce-0cf19c11925f";
 const AMOUNT = 10.00;
@@ -9,7 +9,8 @@ async function sendRequest(idempotencyKey) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Idempotency-Key': idempotencyKey
+                'X-Idempotency-Key': idempotencyKey,
+                'Authorization': `Bearer ${process.env.API_SECRET_KEY}` 
             },
             body: JSON.stringify({
                 sender_id: SENDER_ID,
@@ -50,7 +51,7 @@ async function runPostgresTest() {
     const requests = [];
     
     for (let i = 0; i < 15; i++) {
-        // Generate a random key for each request so Redis lets them all pass to Postgres
+        // Generated a random key for each request so Redis lets them all pass to Postgres
         const randomKey = `unique-key-${Math.random()}`;
         requests.push(sendRequest(randomKey));
     }
