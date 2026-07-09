@@ -11,6 +11,22 @@
 ## 🏗️ System Architecture & Engineering Focus
 
 SentinelPay is a robust backend payment processing engine designed to solve complex distributed system challenges, specifically focusing on **multi-device race conditions**, **network retries (double-spending)**, and **I/O blocking**.
+### 🔗 Live Production API
+* **Gateway URL:** `https://sentinel-pay-api.onrender.com`
+* **Health Check Endpoint:** `https://sentinel-pay-api.onrender.com/`
+
+---
+
+## 🏗️ System Architecture & Cloud Infrastructure
+
+The application decouples the intensive transaction pipeline into an asynchronous, memory-efficient microservice ecosystem deployed across a modern cloud infrastructure stack:
+
+* **API Gateway Layer:** Node.js & Express hosted on **Render** (handles validation, route management, and incoming web traffic).
+* **In-Memory Cache & Lock Layer:** Serverless Redis cluster hosted on **Upstash** (manages rapid-fire idempotency tracking with sub-millisecond latencies).
+* **Background Worker Queue:** Distributed task allocation using **BullMQ** to gracefully manage heavy execution spikes outside the main execution thread.
+* **Relational Persistence Layer:** Serverless PostgreSQL database hosted on **Neon**, leveraging transactional ACID guarantees.
+
+---
 
 ### Core Technical Achievements:
 
