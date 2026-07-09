@@ -40,6 +40,8 @@ SentinelPay/
 ├── middlewares/        # Idempotency and API Auth security layers
 ├── routes/             # Express traffic routing
 ├── schema.sql          # Double-entry ledger DDL
+├── seed.js             # Automated database setup & dummy data seeder
 ├── worker.js           # Decoupled BullMQ background consumer
 ├── stress.js           # Custom concurrency stress-testing script
-└── server.js           # Application orchestrator
+├── server.js           # Application orchestrator
+└── .env.example        # Environment variable template
